@@ -1,0 +1,49 @@
+@import './global.scss';
+
+.event-details-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: $secondary-color;
+  }
+  
+  .event-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+  
+    h2 {
+      color: $primary-color;
+    }
+  
+    p {
+      font-size: 16px;
+      margin: 10px 0;
+    }
+  
+    .btn-back {
+      background-color: $primary-color;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+  
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+  }
+  
+  .loading {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 50px;
+  }
+  

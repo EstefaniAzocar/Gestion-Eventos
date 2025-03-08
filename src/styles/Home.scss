@@ -1,0 +1,59 @@
+@import './global.scss';
+
+.home-container {
+  max-width: 800px;
+  margin: 20px auto;
+  text-align: center;
+
+  .btn-create {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+
+  .event-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: $secondary-color;
+    }
+
+    .event-link {
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+  
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+    .btn-edit {
+      background-color: $warning-color;
+      color: white;
+      padding: 5px 10px;
+      border: none;
+      cursor: pointer;
+      margin-right: 5px;
+    }
+
+    .btn-delete {
+      background-color: $danger-color;
+      color: white;
+      padding: 5px 10px;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}

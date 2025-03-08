@@ -1,0 +1,19 @@
+// Definir las variables antes de importar otros archivos
+$primary-color: #007bff;
+$secondary-color: #f8f9fa;
+$danger-color: #f44336;
+$warning-color: #ffc107;
+
+body {
+  font-family: Arial, sans-serif;
+  background: $secondary-color;
+  margin: 0;
+  padding: 0;
+}
+
+// Importación de los estilos de cada página
+// @import './Home.scss';
+// @import './CreateEvent.scss';
+// @import './EditEvent.scss';
+// @import './EventDetails.scss';
+
