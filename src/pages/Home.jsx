@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { getEventos, eliminarEvento } from "../services/eventService";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import CreateEvent from "./CreateEvent";
+import EditEvent from "./EditEvent";
 import "../styles/Home.scss";
 
 function Home() {
   const [eventos, setEventos] = useState([]);
-  const navigate = useNavigate();
+  const [eventoEdit, setEventoEdit] = useState(null);
+  const [showCreateModal, setShowCreateModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
 
   useEffect(() => {
     getEventos().then(setEventos);
@@ -20,9 +22,10 @@ function Home() {
   return (
     <div className="home-container">
       <h1>Lista de Eventos</h1>
-      <button className="btn-create" onClick={() => navigate("/crear")}>
+      <button className="btn-create" onClick={() => setShowCreateModal(true)}>
         Nuevo Evento
       </button>
+
       <table className="event-table">
         <thead>
           <tr>
@@ -36,16 +39,12 @@ function Home() {
         <tbody>
           {eventos.map((evento) => (
             <tr key={evento.id}>
-              <td>
-                <Link to={`/event/${evento.id}`} className="event-link">
-                  {evento.nombre}
-                </Link>
-              </td>
+              <td>{evento.nombre}</td>
               <td>{new Date(evento.fecha).toLocaleString()}</td>
               <td>{evento.descripcion}</td>
               <td>{evento.ubicacion}</td>
               <td>
-                <button className="btn-edit" onClick={() => navigate(`/editar/${evento.id}`)}>
+                <button className="btn-edit" onClick={() => { setEventoEdit(evento); setShowEditModal(true); }}>
                   Editar
                 </button>
                 <button className="btn-delete" onClick={() => handleEliminar(evento.id)}>
@@ -56,6 +55,12 @@ function Home() {
           ))}
         </tbody>
       </table>
+
+      {/* Modal para Crear */}
+      {showCreateModal && <CreateEvent closeModal={() => setShowCreateModal(false)} setEventos={setEventos}  />}
+
+      {/* Modal para Editar */}
+      {showEditModal && eventoEdit && <EditEvent evento={eventoEdit} closeModal={() => setShowEditModal(false)} setEventos={setEventos} />}
     </div>
   );
 }

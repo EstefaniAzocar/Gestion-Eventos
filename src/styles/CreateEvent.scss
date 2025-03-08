@@ -25,35 +25,17 @@
         border-radius: 5px;
       }
   
-      .button-group {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 15px;
+      button {
+        background: $primary-color;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
   
-        .btn-create {
-          background: $primary-color;
-          color: white;
-          padding: 10px;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-  
-          &:hover {
-            background: darken($primary-color, 10%);
-          }
-        }
-  
-        .btn-cancel {
-          background: $danger-color;
-          color: white;
-          padding: 10px;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-  
-          &:hover {
-            background: darken($danger-color, 10%);
-          }
+        &:hover {
+          background: darken($primary-color, 10%);
         }
       }
     }
