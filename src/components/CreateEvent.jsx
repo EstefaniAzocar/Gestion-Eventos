@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { crearEvento, getEventos } from '../services/eventService';
-import '../styles/Modal.scss';
+import Swal from "sweetalert2";
+import '../styles/CreateEvent.scss';
 
 function CreateEvent({ closeModal, setEventos }) {
   const [evento, setEvento] = useState({
@@ -16,11 +17,18 @@ function CreateEvent({ closeModal, setEventos }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await crearEvento(evento);
-    const eventosActualizados = await getEventos(); // Actualiza la lista
-    setEventos(eventosActualizados);
-    closeModal();
+    try {
+      await crearEvento(evento);
+      const eventosActualizados = await getEventos(); // Actualiza la lista
+      setEventos(eventosActualizados);
+      Swal.fire("¡Éxito!", "El evento se creó correctamente.", "success");
+      closeModal();
+    } catch (error) {
+      Swal.fire("Error", "Hubo un problema al crear el evento.", "error");
+      console.error("Error al crear el evento:", error);
+    }
   };
+  
 
   return (
     <div className="modal-overlay">
@@ -28,7 +36,7 @@ function CreateEvent({ closeModal, setEventos }) {
         <h2>Crear Evento</h2>
         <form onSubmit={handleSubmit}>
           <input type="text" name="nombre" placeholder="Nombre" onChange={handleChange} required />
-          <input type="datetime-local" name="fecha" onChange={handleChange} required />
+          <input type="date" name="fecha" onChange={handleChange} required data-testid="fecha"/>
           <input type="text" name="descripcion" placeholder="Descripción" onChange={handleChange} required />
           <input type="text" name="ubicacion" placeholder="Ubicación" onChange={handleChange} required />
           <div className="button-group">

@@ -1,49 +1,78 @@
 @import './global.scss';
 
 .event-details-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: $secondary-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, lighten($secondary-color, 10%), darken($secondary-color, 5%)); // Fondo con degradado sutil
+  padding: 20px; // Evita que la tarjeta toque los bordes en pantallas pequeñas
+}
+
+.event-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 90%; // Que se adapte bien en dispositivos pequeños
+  min-height: 250px; // Evita que la tarjeta se vea demasiado comprimida
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; // Distribuye los elementos correctamente
+  gap: 15px; // Espaciado uniforme entre elementos internos
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   }
-  
-  .event-card {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    max-width: 400px;
-    width: 100%;
-  
-    h2 {
-      color: $primary-color;
+
+  h2 {
+    color: $color-black;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  p {
+    
+    font-size: 17px;
+    // margin: 10px 0;
+    margin: 0%;
+    padding: 0%;
+    color: darken($secondary-color, 60%);
+    text-align: justify;
+    // flex-grow: ; // Hace que el texto ocupe el espacio disponible sin empujar el botón
+  }
+
+  .btn-back {
+    background: $primary-color;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-self: center; // Centra el botón si la tarjeta es más alta
+
+    &:hover {
+      background-color: darken($primary-color, 15%);
+      transform: scale(1.05);
     }
-  
-    p {
-      font-size: 16px;
-      margin: 10px 0;
-    }
-  
-    .btn-back {
-      background-color: $primary-color;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 10px;
-  
-      &:hover {
-        background-color: darken($primary-color, 10%);
-      }
+
+    &:active {
+      transform: scale(0.95);
     }
   }
-  
-  .loading {
-    text-align: center;
-    font-size: 18px;
-    margin-top: 50px;
-  }
-  
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: $primary-color;
+  margin-top: 50px;
+}

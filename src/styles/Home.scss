@@ -4,56 +4,86 @@
   max-width: 800px;
   margin: 20px auto;
   text-align: center;
+  margin-top: 5%;
 
-  .btn-create {
+  .btn-NewEvent {
     background-color: #007bff;
     color: white;
     padding: 10px 15px;
     border: none;
     cursor: pointer;
-    margin-bottom: 10px;
+    margin: 40px;
   }
 
   .event-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   
 
     th, td {
-      border: 1px solid #ddd;
+      border: 1px solid $color-black;
       padding: 8px;
       text-align: left;
+      vertical-align: middle;
     }
 
     th {
-      background-color: $secondary-color;
+      background-color: $color-Gray;
     }
 
     .event-link {
-        text-decoration: none;
-        color: #007bff;
-        font-weight: bold;
-  
-        &:hover {
-          text-decoration: underline;
-        }
-      }
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
 
-    .btn-edit {
-      background-color: $warning-color;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    td:last-child {
+      text-align: center;
+      white-space: nowrap;
+      width: 15%;
+    }
+
+    // Contenedor de los botones en fila
+    .actions {
+      display: flex;
+      flex-direction: row; // Asegura que los botones estén en línea horizontal
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-edit, .btn-delete {
       color: white;
-      padding: 5px 10px;
+      // padding: 6px 10px;
       border: none;
       cursor: pointer;
-      margin-right: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 35px;
+      border-radius: 5px;
+    }
+
+    svg { // Aplica a los íconos dentro del botón
+      font-size: 1.5rem; // Aumenta el tamaño del ícono
+    }
+  
+
+    .btn-edit {
+      color: $warning-color;
+      // width: 100%;
     }
 
     .btn-delete {
-      background-color: $danger-color;
-      color: white;
-      padding: 5px 10px;
-      border: none;
-      cursor: pointer;
+      color: $danger-color;
     }
   }
 }

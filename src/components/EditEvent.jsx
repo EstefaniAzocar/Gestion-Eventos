@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { actualizarEvento, getEventos } from '../services/eventService';
+import Swal from "sweetalert2";
+
 import '../styles/Modal.scss';
 
 function EditEvent({ evento, closeModal, setEventos }) {
@@ -18,19 +20,25 @@ function EditEvent({ evento, closeModal, setEventos }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await actualizarEvento(eventoEdit.id, eventoEdit);
-    const eventosActualizados = await getEventos(); // Obtiene la lista actualizada
-    setEventos(eventosActualizados);
-    closeModal();
+    try {
+      await actualizarEvento(eventoEdit.id, eventoEdit);
+      const eventosActualizados = await getEventos();
+      setEventos(eventosActualizados);
+      Swal.fire("¡Éxito!", "El evento se actualizó correctamente.", "success");
+      closeModal();
+    } catch (error) {
+      Swal.fire("Error", "Hubo un problema al actualizar el evento.", "error");
+      console.error("Error al actualizar el evento:", error);
+    }
   };
-
+  
   return (
     <div className="modal-overlay">
       <div className="modal-content">
         <h2>Editar Evento</h2>
-        <form onSubmit={handleSubmit} className='formulary'>
+        <form onSubmit={handleSubmit} className='form-event' data-testid="edit-form">
           <input type="text" name="nombre" value={eventoEdit.nombre} onChange={handleChange} required placeholder="Nombre" className='input'/>
-          <input type="datetime-local" name="fecha" value={eventoEdit.fecha} onChange={handleChange} required />
+          <input type="date" name="fecha" value={eventoEdit.fecha} onChange={handleChange} required data-testid="fecha-input" />
           <input type="text" name="descripcion" value={eventoEdit.descripcion} onChange={handleChange} required placeholder="Descripción" />
           <input type="text" name="ubicacion" value={eventoEdit.ubicacion} onChange={handleChange} required placeholder="Ubicación" />
           <div className="button-group">
