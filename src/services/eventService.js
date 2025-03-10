@@ -48,4 +48,3 @@ export const eliminarEvento = async (id) => {
     console.error("Error eliminando evento:", error);
   }
 };
-

@@ -1,49 +1,79 @@
-@import './global.scss';
+@use './global.scss' as global;
+@use 'sass:color';
 
 .event-details-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: $secondary-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, 
+    color.adjust(global.$secondary-color, $lightness: 10%), 
+    color.adjust(global.$secondary-color, $lightness: -5%) 
+  ); 
+  padding: 20px;
+}
+
+.event-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   }
-  
-  .event-card {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    max-width: 400px;
-    width: 100%;
-  
-    h2 {
-      color: $primary-color;
+
+  h2 {
+    color: global.$color-black;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 17px;
+    margin: 0;
+    padding: 0;
+    color: color.adjust(global.$secondary-color, $lightness: -60%);
+    text-align: justify;
+  }
+
+  .btn-back {
+    background: global.$primary-color;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-self: center;
+
+    &:hover {
+      background-color: color.adjust(global.$primary-color, $lightness: -15%);
+      transform: scale(1.05);
     }
-  
-    p {
-      font-size: 16px;
-      margin: 10px 0;
-    }
-  
-    .btn-back {
-      background-color: $primary-color;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 10px;
-  
-      &:hover {
-        background-color: darken($primary-color, 10%);
-      }
+
+    &:active {
+      transform: scale(0.95);
     }
   }
-  
-  .loading {
-    text-align: center;
-    font-size: 18px;
-    margin-top: 50px;
-  }
-  
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: global.$primary-color;
+  margin-top: 50px;
+}
