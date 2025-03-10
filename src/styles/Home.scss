@@ -1,4 +1,4 @@
-@import './global.scss';
+@use './global.scss';
 
 .home-container {
   max-width: 800px;
@@ -24,14 +24,14 @@
    
 
     th, td {
-      border: 1px solid $color-black;
+      border: 1px solid global.$color-black;
       padding: 8px;
       text-align: left;
       vertical-align: middle;
     }
 
     th {
-      background-color: $color-Gray;
+      background-color: global.$color-Gray;
     }
 
     .event-link {
@@ -78,12 +78,12 @@
   
 
     .btn-edit {
-      color: $warning-color;
+      color: global.$warning-color;
       // width: 100%;
     }
 
     .btn-delete {
-      color: $danger-color;
+      color: global.$danger-color;
     }
   }
 }

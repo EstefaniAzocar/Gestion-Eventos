@@ -30,7 +30,7 @@
   }
   
   .btn-submit {
-    background-color: #007bff;
+    background-color: $primary-color;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -39,7 +39,7 @@
   }
   
   .btn-cancel {
-    background-color: #dc3545;
+    background-color: $danger-color;
     color: white;
     border: none;
     padding: 10px 15px;

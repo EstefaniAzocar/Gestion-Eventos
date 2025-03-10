@@ -1,4 +1,4 @@
-@import './global.scss';
+@use './global.scss' as global;
 
 .modal-content {
   max-width: 500px;
@@ -10,7 +10,7 @@
   text-align: center;
 
   h2 {
-    color: $color-black;
+    color: global.$color-black;
     margin-bottom: 30px;
   }
 
