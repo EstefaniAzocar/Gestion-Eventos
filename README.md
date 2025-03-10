@@ -1,3 +1,29 @@
+# 🎨 Frontend - Gestión de Eventos
+
+## 📂 Estructura del Proyecto
+```
+frontend/
+├── src/
+│   ├── components/   # Componentes reutilizables
+│   ├── pages/        # Vistas principales
+│   ├── styles/       # Estilos con SCSS
+│   ├── App.jsx       # Componente principal
+│   ├── main.jsx      # Punto de entrada
+│   ├── eventService.js # Conexión con el backend
+```
+
+## 🚀 Configuración y Ejecución
+
+### 1️⃣ Requisitos previos
+- Node.js 18+
+- npm o yarn
+
+### 2️⃣ Instalación y ejecución
+```bash
+cd frontend
+npm install
+npm run dev
+```
 # 📌 Backend - Gestión de Eventos
 
 ## 📂 Estructura del Proyecto
@@ -38,34 +64,6 @@ mvn spring-boot:run
 | DELETE | /events/{id} | Eliminar un evento        |
 
 ---
-
-# 🎨 Frontend - Gestión de Eventos
-
-## 📂 Estructura del Proyecto
-```
-frontend/
-├── src/
-│   ├── components/   # Componentes reutilizables
-│   ├── pages/        # Vistas principales
-│   ├── styles/       # Estilos con SCSS
-│   ├── App.jsx       # Componente principal
-│   ├── main.jsx      # Punto de entrada
-│   ├── eventService.js # Conexión con el backend
-```
-
-## 🚀 Configuración y Ejecución
-
-### 1️⃣ Requisitos previos
-- Node.js 18+
-- npm o yarn
-
-### 2️⃣ Instalación y ejecución
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
 ## 🔗 Conexión con el Backend
 Modificar `eventService.js` si es necesario:
 ```js
